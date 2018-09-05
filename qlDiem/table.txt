@@ -1,0 +1,5 @@
+logic
+10
+English
+8
+Basketball
