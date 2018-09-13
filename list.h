@@ -1,5 +1,6 @@
 
-
+#ifndef LISH_H
+#define LIST_H
 using namespace std;
 
 template<class T>
@@ -9,16 +10,14 @@ struct Node
 	Node<T> *next;
 };
 template<class T>
-class list
+class List
 {
 private:
 	Node <T> *head;
-	Node <T> *tail;
 public:
-	list()
+	List()
 	{
 		head = 0;
-		tail = 0;
 	};
 
 	void pushBack(T newValue)
@@ -47,9 +46,8 @@ public:
 
 		}
 		cout<<count;
-
 	}
-	list (T t, int count)
+	List (T t, int count)
 	{
 		head = 0;
 		for(int i=0;i<count;i++)
@@ -58,24 +56,37 @@ public:
 			pushBack(t);
 		}
 	}
-	list(T t, int from, int to)
+	List(T t, int from, int to)
 	{
 		Node <T> *n = head;
-		Node <T> *p = new Node<T>;
 		for(int i=0;i<size();i++)
 		{
 			n = n -> next;
 		}
-
-		for(int i=from ; i<=to ; i++)
+		for(int i = from; i<= to;i++)
 		{
-			p = n -> p;
+			n = n -> next;
+			pushBack(n -> value);
 		}
 	}
-	void pushTop(T newValue)
+	void Delete(int pos)
 	{
-		Node<T> *n = new Node<T>;
+		if(pos ==1)
+			Node <T>*q = head;
+			head = head -> next;
+			delete q;
+		else
+		{
+			Node <T> *p = head;
+			for(int i=0;i<pos-1;i++)
+			{
+				p=p->next;
 
+			}
+			Node <T> *q = p -> next;
+			p -> next = p-> next -> next;
+			delete q;
+		}
 	}
 	void printAll() const
 	{
@@ -90,9 +101,10 @@ public:
 	// void insert(int pos, T value);
 	// void Delete(int pos);
 	// void Delete (int from, int to);
-	// int max() const;
-	// int min() const;
+	// T max() const;
+	// T min() const;
 	// list reverse(T t);
 
 
 };
+#endif
