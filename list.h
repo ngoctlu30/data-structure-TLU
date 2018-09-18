@@ -78,7 +78,7 @@ public:
 		else
 		{
 			Node <T> *p = head;
-			for(int i=0;i<pos-1;i++)
+			for(int i=0;i<pos;i++)
 			{
 				p=p->next;
 
