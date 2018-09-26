@@ -1,6 +1,6 @@
 #ifndef STACK_H
 #define STACK_H
-#include "node.h"
+#include "Node.h"
 template< class T>
 class Stack
 {
