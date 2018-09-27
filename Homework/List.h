@@ -28,6 +28,28 @@ public:
 			p -> next = n;
 		}
 	}
+	List(const List<T> &a)
+	{
+		Node<T> *p = a.head;
+		head = 0;
+		while(p != 0)
+		{
+			this -> pushBack(p -> data);
+			p = p -> next;
+		}
+	}
+	// List<T> *operator =  (const List<T> &p)
+	// {
+	// 	List<T> v;
+	// 	Node<T> *t = p.head;
+	// 	head = 0;
+	// 	while(p != 0)
+	// 	{
+	// 		this -> pushBack(t -> data);
+	// 		t = t -> next;	
+	// 	}
+
+	// }
 	void pushTop(T value)
 	{
 		Node<T> *n  = new Node<T>;

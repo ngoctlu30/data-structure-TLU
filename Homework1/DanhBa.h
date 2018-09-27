@@ -23,10 +23,10 @@ public:
 	};
 	friend istream &operator >> (istream &in, DanhBa &a )
 	{
-		cin.ignore();
-		getline(cin, a.name);
-		cin.ignore(0);
-		getline(cin, a.phoneN);
+		in.ignore();
+		getline(in, a.name);
+		in.ignore();
+		getline(in, a.phoneN);
 		return in;
 	}
 	friend ostream &operator << (ostream &out, DanhBa &a)
