@@ -61,6 +61,19 @@ public:
 			}
 		}
 	}
+	matran &operator + (matran<T> &a)
+	{
+		Node<T> *p = a.head;
+		matran<T> kq = new Node<T>;
+
+		while(p != 0)
+		{
+			matran<T> kq = new Node<T>;
+			n -> value =this -> value + p -> value;
+			p = p-> next;
+		}
+		return kq;
+	}
 	void Print()
 	{
 		int a = getKT();

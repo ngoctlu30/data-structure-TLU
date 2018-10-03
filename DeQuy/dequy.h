@@ -167,5 +167,48 @@ void XepHau(int c, char bc[][100], int N, int &sc)
         }
     }
 }
+void Sinh_Nhi_Phan(int pos, int a[], int N)
+{
+    if(pos > N)
+    {
+            for(int i=0;i<N;i++)
+                cout<<a[i]<<" ";
+            cout<<endl;
+    }
+    else
+    {
+        a[pos-1] = 0;
+        Sinh_Nhi_Phan(pos+1, a, N);
+        a[pos-1] = 1;
+        Sinh_Nhi_Phan(pos+1, a, N);
+    }
+}
+bool SinhDuoc(int v, int a[], int N)
+{
+    for(int i=0;i<N;i++)
+        if(a[i] == v)
+            return false;
+    return true;
+}
+void Sinh_Hoan_Vi(int pos, int a[], int N)
+{
+    if(pos > N)
+    {
+        for(int i=0;i<N;i++)
+            cout<<a[i]<<" ";
+        cout<<endl;
+    }
+    else
+    {
+        for(int i = 1 ; i <= N ; i++)
+        {
 
+            if(SinhDuoc(i, a, N) == true)
+            {
+                a[pos-1] = i;
+                Sinh_Hoan_Vi(pos+1,  a, N);
+            }
+        } 
+    }
+}
 #endif
