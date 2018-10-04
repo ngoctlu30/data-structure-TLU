@@ -4,14 +4,19 @@ using namespace std;
 int main()
 {
     Tree<int> x;
+    x.AddChild(10);
     x.AddChild(6);
-    x.AddChild(4);
-    x.AddChild(5);
+    x.AddChild(15);
+    x.AddChild(2);
     x.AddChild(8);
-    x.AddChild(9);
-    x.AddChild(1);
+    x.AddChild(11);
+    x.AddChild(13);
+   // x.Add(2, 7);
     x.PreOrder(); 
-    x.LastOrder();
-    x.FatherOrder();
+    // x.PostOrder();
+    // x.InOrder();
+    cout<<x.Max();
+    // if(x.Search(15))
+    //     cout<<"1";
     return 0;
 }
