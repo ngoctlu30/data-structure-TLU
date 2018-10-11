@@ -63,8 +63,16 @@ private:
     };
     T Maxx(Node<T> *root)
     {
-        int max = root -> value;
-        
+        if(root != 0)
+        {
+
+            int max = root -> value;
+            int left = Maxx(root -> l);
+            int right = Maxx(root -> r);
+            return max;
+        }
+
+
     }
 public:
     Tree()
@@ -121,9 +129,7 @@ public:
         cout<<endl;
     };
     bool Search(int key)
-    {
-        
-        
+    {   
         Queue<Node<T> *> q;
         Node<T> *p = root;
         q.EnQueue(p);
@@ -144,33 +150,28 @@ public:
 
         return false;
     }
-    // T Max()
-    // {
-    //     Queue<Node<T> *> q;
-    //     Node<T> *p = root;
-    //     q.EnQueue(p);
-    //     int max = root -> value;
-    //     while(!q.IsEmpty())
-    //     {
-    //         Node<T> *t = q.DeQueue();
-    //         if(t -> l -> value > max)
-    //         {
-    //             max = t -> l -> value;
-    //         }
-    //         else if(t -> r -> value > max)
-    //         {
-    //             max = t -> r -> value;
-    //         }
-    //         q.EnQueue(t -> l);
-    //         q.EnQueue(t -> r);
-    //     }
-    //     return max;
-
-
-    // }
     T Max()
     {
-        Maxx(root);
+        int max = root -> value;
+        
+        Queue<Node<T> *> q;
+        Node<T> *p = root;
+        q.EnQueue(p);
+        while(!q.IsEmpty())
+        {
+            Node<T> *t = q.DeQueue();
+            if(t -> l -> value > max)
+                max = t -> l -> value;
+            if(t -> r -> value > max)
+                max = t -> r -> value ;
+            // else
+            // {
+            //     q.EnQueue(root -> l);
+            //     q.EnQueue(root -> r);
+            // }
+        }
+        return max;
+
     }
     void Add(int a, int b)
     {
