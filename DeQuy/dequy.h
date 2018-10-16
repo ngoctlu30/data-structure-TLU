@@ -167,6 +167,13 @@ void XepHau(int c, char bc[][100], int N, int &sc)
         }
     }
 }
+bool SinhDuoc(int v, int a[], int pos)
+{
+    for(int i=0;i<pos;i++)
+        if(a[i] == v)
+            return false;
+        return true;
+}
 void Sinh_Nhi_Phan(int pos, int a[], int N)
 {
     if(pos > N)
@@ -177,20 +184,17 @@ void Sinh_Nhi_Phan(int pos, int a[], int N)
     }
     else
     {
-        a[pos-1] = 0;
-        Sinh_Nhi_Phan(pos+1, a, N);
-        a[pos-1] = 1;
-        Sinh_Nhi_Phan(pos+1, a, N);
+        for(int i=0;i<=1;i++)
+        {
+            
+                a[pos-1] = i;
+                Sinh_Nhi_Phan(pos+1, a, N);
+                
+        }
     }
 }
-bool SinhDuoc(int v, int a[], int N)
-{
-    for(int i=0;i<N;i++)
-        if(a[i] == v)
-            return false;
-    return true;
-}
-void Sinh_Hoan_Vi(int pos, int a[], int N)
+
+void Sinh_Hoan_Vi_So(int pos, int a[], int N)
 {
     if(pos > N)
     {
@@ -200,15 +204,52 @@ void Sinh_Hoan_Vi(int pos, int a[], int N)
     }
     else
     {
-        for(int i = 1 ; i <= N ; i++)
+        for(int i = 1 ; i <= N  ; i++)
         {
-
-            if(SinhDuoc(i, a, N) == true)
+            if(SinhDuoc(i, a, pos))
             {
                 a[pos-1] = i;
-                Sinh_Hoan_Vi(pos+1,  a, N);
-            }
+                Sinh_Hoan_Vi_So(pos+1,  a, N);
+
+            } 
         } 
     }
+}
+bool SinhDuocChuoi(char v, char a[], int pos)
+{
+    for(int i=1;i<= pos;i++)
+        if(a[i] == v)
+            return false;
+    return true;
+}
+void Nhap(char a[100], int N)
+{
+    for(int i=1;i<=N;i++)
+    {
+        cout<<"Nhap ki tu thu "<<i<<" : ";
+        cin>>a[i];
+    }
+}
+void Sinh_Hoan_Vi_Chuoi(int pos, char a[], int N)
+{
+    if(pos > N)
+    {
+        for(int i=0;i <= N;i++)
+        {
+            cout<<a[i];
+        }
+        cout<<endl;
+    }
+    else
+    {    
+        a[pos-1] = 'A';
+        Sinh_Hoan_Vi_Chuoi(pos+1, a, N);
+        a[pos-1] = 'H';
+        Sinh_Hoan_Vi_Chuoi(pos+1, a, N);
+        a[pos-1] = 'K';
+        Sinh_Hoan_Vi_Chuoi(pos+1, a, N);   
+    }
+
+
 }
 #endif

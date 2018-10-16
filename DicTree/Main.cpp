@@ -1,9 +1,12 @@
 #include <iostream>
 using namespace std;
-#include "Dictree.h"
+#include "test.h"
 int main()
 {
-	Tree t;
+	DicTree t;
 	t.Add("HELLO");
+	cout<<t.Search("HELLO")<<endl;
+	
+	cout<<t.Search("HEIGH")<<endl;
 	return 0;
 }

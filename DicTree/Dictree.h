@@ -1,4 +1,4 @@
-#ifndef DICTREE_H
+ #ifndef DICTREE_H
 #define DICTREE_H
 #include "node.h"
 #include <string.h>
@@ -37,6 +37,17 @@ private:
 			}
 		}
 	};
+	Node * SearchKiTu(char kt, Node *p) const
+    {
+        Node *q = p->con;
+        while (q!= 0)
+        {
+            if (q->ch == kt)
+                return q;
+            q = q->next;
+        }
+        return 0;
+    };
 public:
 	Tree()
 	{
@@ -66,8 +77,26 @@ public:
 			if(q -> next == 0)
 				q -> next = pe;
 		}
-
 	}
+	bool Search(const char *tu) const
+    {
+        int len = strlen(tu);
+        Node * p = r;
+        for(int i = 0; i<len; i++)
+        {
+            p = SearchKiTu(tu[i], p);
+            if (p == 0)
+                return false;
+        }
+        Node *q = p->con;
+        while (q!=0)
+        {
+            if (q->ch == '#')
+                return true;
+            q = q->next;             
+        }
+        return false;
+    };
 };
 
 #endif
